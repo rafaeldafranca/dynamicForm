@@ -4,9 +4,6 @@ export interface FormModel {
 }
 
 export interface FieldModel {
-    items: FieldItemModel[]
-}
-export interface FieldItemModel {
     element: string
     label: string
     value: string

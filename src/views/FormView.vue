@@ -5,9 +5,9 @@
         <div class="d-flex justify-center">
             <v-form @submit.prevent="">
                 <h2 class="text-center">Formulário</h2>
-                <span class="message" v-if="!myForm.fields.items.length">Sem campos para mostrar</span>
+                <span class="message" v-if="!myForm.fields.length">Sem campos para mostrar</span>
 
-                <component v-for="item, index in myForm.fields.items" :key="index" :is="item.element" :label="item.label"
+                <component v-for="item, index in myForm.fields" :key="index" :is="item.element" :label="item.label"
                     :type="item.type ?? ''" :items="item.items ?? ''" :modelValue="item.value" @update:modelValue="onChange"
                     @focus="currentIndex = index">
                 </component>
@@ -33,11 +33,11 @@ export default {
     props: ['myForm'],
     methods: {
         onChange(newval: any) {
-            var item = this.myForm.fields.items.at(this.currentIndex) as any
+            var item = this.myForm.fields.at(this.currentIndex) as any
             item.value = newval;
         },
         submitForm() {
-            alert(JSON.stringify(this.myForm.fields.items))
+            alert(JSON.stringify(this.myForm.fields))
         }
     }
 }
