@@ -9,5 +9,6 @@ export interface FieldModel {
     value: string
     type: string
     order: number
+    rules: string[]
     items: string[]
 }

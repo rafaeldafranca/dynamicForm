@@ -9,23 +9,11 @@
           <v-textarea id="area" variant="filled" label="JSON input" no-resize rows="20"
             :model-value="JSON.stringify(myform, null, 4)">
           </v-textarea>
-          <v-btn @click="updateJSON">Atualizar JSON</v-btn>
+          <v-btn @click="updateJSON" block color="gray">Atualizar JSON</v-btn>
         </div>
       </v-col>
     </v-row>
   </main>
-
-  <v-footer class="d-flex flex-column">
-    <div class="bg-teal d-flex w-100 align-center px-4">
-      <strong>Get connected with us on social networks!</strong>
-
-      <v-spacer></v-spacer>
-    </div>
-
-    <div class="px-4 py-2 bg-black text-center w-100">
-      {{ new Date().getFullYear() }} — <strong>Rafael França</strong>
-    </div>
-  </v-footer>
 </template>
   
 <script lang="ts">
@@ -42,10 +30,6 @@ export default {
       return JSON.stringify(this.myform.fields)
     }
   },
-  mounted() {
-    console.log(this.myform)
-
-  },
   components: { FormView },
   methods: {
     updateJSON() {
@@ -61,7 +45,8 @@ export default {
             "label": "nome",
             "value": "",
             "type": "text",
-            "order": 1
+            "order": 1,
+            "rules": ['required']
           },
           {
             "element": "v-text-field",
@@ -69,7 +54,8 @@ export default {
             "value": "",
             "type": "email",
             "items": "",
-            "order": 2
+            "order": 2,
+            "rules": ['required', 'email']
           },
           {
             "element": "v-text-field",
@@ -77,14 +63,16 @@ export default {
             "value": "",
             "type": "password",
             "items": "",
-            "order": 3
+            "order": 3,
+            "rules": ['required']
           },
           {
             "element": "v-select",
             "label": "ativo?",
             "value": "sim",
             "items": ["sim", "nao"],
-            "order": 4
+            "order": 4,
+            "rules": ['required']
           }
         ]
       }
@@ -94,7 +82,7 @@ export default {
 
 </script>
   
-<style scoped>
+<style lang="scss" scoped>
 .ta {
   width: 600px;
   max-height: 200px;
